@@ -1,0 +1,35 @@
+name: CI Процесс
+
+on:
+  push:
+    branches:
+      - develop
+      - release/*
+  pull_request:
+    branches:
+      - develop
+      - release/*
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Репозитори татах
+        uses: actions/checkout@v4
+
+      - name: JDK 21 Тохируулах
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Checkstyle Шалгах
+        run: mvn -B checkstyle:check
+
+      - name: JUnit Тест ба JaCoCo Coverage Шалгах
+        run: mvn -B test jacoco:check
+
+      - name: JaCoCo HTML Тайлан Үүсгэх
+        if: always()
+        run: mvn -B jacoco:report
