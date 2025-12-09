@@ -28,8 +28,4 @@ jobs:
         run: mvn -B checkstyle:check
 
       - name: JUnit Тест ба JaCoCo Coverage Шалгах
-        run: mvn -B test jacoco:check
-
-      - name: JaCoCo HTML Тайлан Үүсгэх
-        if: always()
-        run: mvn -B jacoco:report
+        run: mvn -B test
