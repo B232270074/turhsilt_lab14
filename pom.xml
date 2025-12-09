@@ -16,7 +16,6 @@
     </properties>
 
     <dependencies>
-        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -28,49 +27,48 @@
     <build>
         <plugins>
 
-            <!-- Surefire Plugin (JUnit5 test runner) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
             </plugin>
 
-            <!-- Checkstyle Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.3.1</version>
                 <configuration>
                     <configLocation>checkstyle.xml</configLocation>
-                    <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failOnViolation>true</failOnViolation>
                 </configuration>
             </plugin>
 
-            <!-- JaCoCo Plugin (100% branch coverage required) -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
-
                 <executions>
-                    <!-- Coverage агент -->
+
                     <execution>
-                        <goals><goal>prepare-agent</goal></goals>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
                     </execution>
 
-                    <!-- Coverage тайлан -->
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
-                        <goals><goal>report</goal></goals>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
                     </execution>
 
-                    <!-- Coverage шалгалт -->
                     <execution>
                         <id>check</id>
-                        <goals><goal>check</goal></goals>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                         <configuration>
                             <rules>
                                 <rule>
@@ -86,6 +84,7 @@
                             </rules>
                         </configuration>
                     </execution>
+
                 </executions>
             </plugin>
 
